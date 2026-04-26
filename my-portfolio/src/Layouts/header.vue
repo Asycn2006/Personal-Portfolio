@@ -1,36 +1,36 @@
 <template>
   <header>
-    <nav class="d-flex justify-content-between align-items-center">
-      <h1>My Portfolio</h1>
+    <nav class="d-flex width-1320 justify-content-between gap-5 p-3 align-items-center">
+      <h1>Vong Vathana</h1>
 
-      <ul class="d-flex gap-3 align-items-center list-unstyled">
+      <ul class="d-flex gap-5 justify-content-center py-2 px-5 rounded-4 bg-info text-white list-unstyled m-0">
         <li>
-            <router-link to="/">
+            <router-link class="text-decoration-none" to="/">
                 Home
             </router-link>
         </li>
         <li>
-            <router-link :to="{ path: '/', hash: '#about' }">
+            <router-link class="text-decoration-none" :to="{ path: '/', hash: '#about' }">
                 About Me
             </router-link>
         </li>
         <li>
-            <router-link :to="{ path: '/', hash: '#skills' }">
+            <router-link class="text-decoration-none" :to="{ path: '/', hash: '#skills' }">
                 Skills
             </router-link>
         </li>
         <li>
-            <router-link :to="{ path: '/', hash: '#services' }">
+            <router-link class="text-decoration-none" :to="{ path: '/', hash: '#services' }">
                 Services
             </router-link>
         </li>
         <li>
-            <router-link :to="{ path: '/', hash: '#projects' }">
+            <router-link class="text-decoration-none" :to="{ path: '/', hash: '#projects' }">
                 Projects
             </router-link>
         </li>
         <li>
-            <router-link :to="{ path: '/', hash: '#contact' }">
+            <router-link class="text-decoration-none" :to="{ path: '/', hash: '#contact' }">
                 Contact
             </router-link>
         </li>

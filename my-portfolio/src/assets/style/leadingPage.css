@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.bg-gradient-1{
+    background-color: blanchedalmond;
+}
+.height-350{
+    height:450px;
+}
+.width-200{
+    width:340px;
+    text-align: center;
+}
+.img-fluid{
+    height:800px;
+}
+.width-1320{
+    width: 1320px;
+    margin: auto;
+}
