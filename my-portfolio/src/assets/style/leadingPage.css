@@ -1,22 +1,383 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* -------------------------------------------------------------
+ * Vong Vathana Portfolio - Premium Custom CSS Stylesheet
+ * Integrates with Vue 3, Bootstrap 5, and Custom Fonts
+ * ------------------------------------------------------------- */
+
+/* Define Design System Variables */
+:root {
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Color Palette (Deep Dark Theme) */
+  --bg-dark-900: #070b13;       /* Ultra deep background */
+  --bg-dark-800: #0f172a;       /* Dark base background */
+  --bg-dark-700: #1e293b;       /* Surface / card background */
+  --bg-dark-600: #334155;       /* Elevated element background */
+  
+  --accent-cyan: #06b6d4;       /* Neon Cyan */
+  --accent-blue: #3b82f6;       /* Vibrant Indigo/Blue */
+  --accent-cyan-glow: rgba(6, 182, 212, 0.15);
+  
+  --text-white: #f8fafc;        /* High contrast primary text */
+  --text-gray-100: #e2e8f0;    /* Secondary readable text */
+  --text-gray-300: #94a3b8;    /* Muted label and placeholder text */
+  --text-gray-400: #64748b;    /* Disabled text */
+  
+  --glass-bg: rgba(15, 23, 42, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.bg-gradient-1{
-    background-color: blanchedalmond;
+
+/* Global Reset & Base Typography */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-.height-350{
-    height:450px;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* Offset for sticky header */
 }
-.width-200{
-    width:340px;
-    text-align: center;
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-dark-900);
+  color: var(--text-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.img-fluid{
-    height:800px;
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
 }
-.width-1320{
-    width: 1320px;
-    margin: auto;
+::-webkit-scrollbar-track {
+  background: var(--bg-dark-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-dark-700);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* -------------------------------------------------------------
+ * Compatibility Helpers (Fixing existing class names in leadingPage.vue)
+ * ------------------------------------------------------------- */
+.bg-gradient-1 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--glass-glow);
+}
+
+.height-350 {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.width-200 {
+  width: auto;
+  min-width: 160px;
+  padding: 0.75rem 1.75rem !important;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: var(--transition-smooth);
+}
+
+.width-1320 {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Override .img-fluid inside .card-img */
+.card-img {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* -------------------------------------------------------------
+ * UI & Premium Design Components
+ * ------------------------------------------------------------- */
+
+/* Glass Cards */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--glass-glow);
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(6, 182, 212, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Buttons with Hover Effects */
+.btn-primary-glow {
+  background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 14px 0 rgba(6, 182, 212, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.btn-primary-glow:hover {
+  background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+  box-shadow: 0 6px 20px 0 rgba(6, 182, 212, 0.5);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.btn-outline-glow {
+  background: transparent;
+  color: var(--accent-cyan);
+  border: 2px solid var(--accent-cyan);
+  transition: var(--transition-smooth);
+}
+
+.btn-outline-glow:hover {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--text-white);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Form Inputs styling */
+.form-control-custom {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-white);
+  padding: 0.85rem 1.25rem;
+  transition: var(--transition-smooth);
+}
+
+.form-control-custom:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-cyan);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+  color: var(--text-white);
+}
+
+.form-label-custom {
+  color: var(--text-gray-300);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Typography styles */
+.section-label {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--accent-cyan);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  line-height: 1.15;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, var(--text-white) 30%, var(--text-gray-300) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-copy {
+  color: var(--text-gray-300);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+/* -------------------------------------------------------------
+ * Specific Page Sections
+ * ------------------------------------------------------------- */
+
+/* Hero Avatar frame styling */
+.avatar-frame {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  padding: 8px;
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.35);
+  animation: float 6s ease-in-out infinite;
+}
+
+.avatar-frame::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 2px dashed rgba(6, 182, 212, 0.4);
+  border-radius: 50%;
+  animation: rotate-dashed 20s linear infinite;
+  pointer-events: none;
+}
+
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-dark-900);
+  border: 4px solid var(--bg-dark-900);
+}
+
+.avatar-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; /* Centers the user's face */
+  transition: transform 0.5s ease;
+}
+
+.avatar-inner img:hover {
+  transform: scale(1.1);
+}
+
+/* Services Page Section */
+.services-section {
+  background: linear-gradient(180deg, #121b2f 0%, #070b13 100%);
+  padding: 100px 0;
+}
+
+.service-card {
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  height: 100%;
+}
+
+.service-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  color: var(--accent-cyan);
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-icon-wrapper {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+  color: #ffffff;
+  border-color: transparent;
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+}
+
+/* Contact Info items style */
+.contact-info-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.contact-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.contact-info-card:hover .contact-icon-box {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--text-white);
+  border-color: var(--accent-cyan);
+}
+
+.social-circle-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  color: var(--text-gray-300);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.social-circle-btn:hover {
+  background: var(--accent-cyan);
+  color: var(--bg-dark-900);
+  border-color: var(--accent-cyan);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.35);
+}
+
+/* Footer Section */
+.footer-section {
+  background-color: var(--bg-dark-900);
+  border-top: 1px solid var(--glass-border);
+  padding: 3rem 0;
+  color: var(--text-gray-300);
+}
+
+/* Animations definition */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes rotate-dashed {
+  to { transform: rotate(360deg); }
+}
+
+/* -------------------------------------------------------------
+ * Responsive Layout Overrides
+ * ------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .avatar-frame {
+    width: 230px;
+    height: 230px;
+    margin: 2rem auto 0 auto;
+  }
 }
