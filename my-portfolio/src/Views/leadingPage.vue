@@ -322,9 +322,8 @@
 
             <ul class="list-unstyled mb-0">
               <li v-for="skill in group.items" :key="skill.name" class="mb-3">
-                <div class="d-flex justify-content-between align-items-center mb-1">
+                <div class="mb-1">
                   <span class="skill-name">{{ skill.name }}</span>
-                  <span class="skill-value text-cyan font-mono small">{{ skill.level }}</span>
                 </div>
                 <div class="progress skill-progress">
                   <div class="progress-bar bg-gradient-cyan" role="progressbar" :style="{ width: skill.level }" :aria-valuenow="parseInt(skill.level)" aria-valuemin="0" aria-valuemax="100"></div>
@@ -766,9 +765,9 @@ const skills = [
     description: 'Core syntax, OOP concepts, and data queries.',
     level: 'Strong',
     items: [
-      { name: 'JavaScript (ES6+)', level: '92%' },
+      { name: 'JavaScript (ES6+)', level: '75%' },
       { name: 'SQL (Database Management)', level: '85%' },
-      { name: 'C++ (OOP & Algorithms)', level: '80%' }
+      { name: 'C++ (OOP & Algorithms)', level: '75%' }
     ]
   },
   {
