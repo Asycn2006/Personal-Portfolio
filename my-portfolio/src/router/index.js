@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../Views/leadingPage.vue"; // use a view, not header
-import Admin from "../Views/DashboardAdmin.vue";
+import Home from "../Views/leadingPage.vue";
 
 const routes = [
   {
@@ -9,9 +8,8 @@ const routes = [
     component: Home,
   },
   {
-    path: "/admin",
-    name: "admin",
-    component: Admin,
+    path: "/:pathMatch(.*)*",
+    redirect: "/",
   },
 ];
 
