@@ -72,7 +72,7 @@
               <router-link class="btn btn-primary-glow width-200 rounded-pill text-decoration-none" :to="{ path: '/', hash: '#contact' }">
                 Contact Me &nbsp;<i class="bi bi-arrow-right-circle-fill"></i>
               </router-link>
-              <a href="/Vong_Vathana_CV.pdf" download="Vong_Vathana_CV.pdf" class="btn btn-outline-glow width-200 rounded-pill text-decoration-none d-inline-flex align-items-center justify-content-center">
+              <a :href="cvPdf" download="Vong-Vathana_CV_Backend-Developer.pdf" class="btn btn-outline-glow width-200 rounded-pill text-decoration-none d-inline-flex align-items-center justify-content-center">
                 <i class="bi bi-arrow-down-circle-fill me-2"></i> Download CV
               </a>
             </div>
@@ -465,7 +465,7 @@
               <button class="btn btn-primary-glow rounded-pill px-4" @click="openCertModal">
                 <i class="bi bi-eye-fill me-2"></i> View Full Certificate
               </button>
-              <a href="/Vong_Vathana_CV.pdf" download="Vong_Vathana_CV.pdf" class="btn btn-outline-glow rounded-pill px-4">
+              <a :href="cvPdf" download="Vong-Vathana_CV_Backend-Developer.pdf" class="btn btn-outline-glow rounded-pill px-4">
                 <i class="bi bi-file-earmark-pdf-fill me-2"></i> Download CV PDF
               </a>
             </div>
@@ -641,7 +641,7 @@
       </div>
 
       <div class="d-flex justify-content-center gap-3">
-        <a href="/Vong_Vathana_CV.pdf" download="Vong_Vathana_CV.pdf" class="btn btn-primary-glow rounded-pill px-4">
+        <a :href="cvPdf" download="Vong-Vathana_CV_Backend-Developer.pdf" class="btn btn-primary-glow rounded-pill px-4">
           <i class="bi bi-file-earmark-pdf-fill me-2"></i> Download CV PDF
         </a>
         <button type="button" class="btn btn-outline-glow rounded-pill px-4" @click="closeCertModal">
@@ -685,6 +685,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Header from "../Layouts/header.vue";
+import cvPdf from "../assets/cv/Vong-Vathana_CV_Backend-Developer.pdf";
 
 // Modal state
 const isCertModalOpen = ref(false);
